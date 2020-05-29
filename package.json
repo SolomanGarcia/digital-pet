@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SolomanGarcia/digital-pet/issues"
   },
-  "homepage": "https://github.com/SolomanGarcia/digital-pet#readme"
+  "homepage": "https://github.com/SolomanGarcia/digital-pet#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }
