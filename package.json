@@ -7,7 +7,9 @@
     "dev": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
-    "format:check": "prettier ./.gitignore --check \"./**/*.{html,json,js,ts,css}\""
+    "format:check": "prettier ./.gitignore --check \"./**/*.{html,json,js,ts,css}\"",
+    "lint": "eslint --ignore-path ./.gitignore --fix \"./**/*.{js,ts}\"",
+    "lint:check": "eslint --ignore-path ./.gitignore --quiet \"./**/*.{js,ts}\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,9 @@
   },
   "homepage": "https://github.com/SolomanGarcia/digital-pet#readme",
   "devDependencies": {
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5"
   }
