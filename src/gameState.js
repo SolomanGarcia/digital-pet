@@ -1,4 +1,11 @@
-import { SCENES, RAIN_CHANCE, DAY_LENGTH, NIGHT_LENGTH } from "./constants";
+import {
+  SCENES,
+  RAIN_CHANCE,
+  DAY_LENGTH,
+  NIGHT_LENGTH,
+  getNextHungerTime,
+  getNextDieTime,
+} from "./constants";
 import { modFox, modScene } from "./ui";
 
 const gameState = {
@@ -6,6 +13,8 @@ const gameState = {
   clock: 1,
   wakeTime: -1,
   sleepTime: -1,
+  hungryTime: -1,
+  dieTime: -1,
   tick() {
     this.clock++;
 
@@ -13,6 +22,10 @@ const gameState = {
       this.wake();
     } else if (this.clock === this.sleepTime) {
       this.sleep();
+    } else if (this.clock === this.hungryTime) {
+      this.getHungry();
+    } else if (this.clock === this.dieTime) {
+      this.die();
     }
 
     return this.clock;
@@ -30,12 +43,22 @@ const gameState = {
     this.scene = Math.random() > RAIN_CHANCE ? 0 : 1;
     modScene(SCENES[this.scene]);
     this.sleepTime = this.clock + DAY_LENGTH;
+    this.hungryTime = getNextHungerTime(this.clock);
   },
   sleep() {
     this.state = "SLEEP";
     modFox("sleep");
     modScene("night");
     this.wakeTime = this.clock + NIGHT_LENGTH;
+  },
+  getHungry() {
+    this.current = "HUNGRY";
+    this.dieTime = getNextDieTime(this.clock);
+    this.hungryTime = -1;
+    modFox("hungry");
+  },
+  die() {
+    console.log("die");
   },
   handleUserAction(icon) {
     // Can't do actions while in these states
