@@ -94,7 +94,15 @@ const gameState = {
     console.log("cleanUpPoop");
   },
   feed() {
-    console.log("feed");
+    // Can only feed when hungry
+    if (this.current !== "HUNGRY") {
+      return;
+    }
+    this.current = "FEEDING";
+    this.dieTime = -1;
+    this.poopTime = getNextPoopTime(this.clock);
+    modFox("eating");
+    this.timeToStartCelebrating = this.clock + 2;
   },
 };
 
