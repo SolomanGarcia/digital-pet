@@ -89,7 +89,7 @@ const gameState = {
     this.current = "DEAD";
     modScene("dead");
     modFox("dead");
-    this.sleepTime = -1;
+    this.clearTimes();
     writeModal("The fox died :( <br/> Press the middle button to start");
   },
   startCelebrating() {
