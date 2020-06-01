@@ -1,15 +1,18 @@
-import { SCENES, RAIN_CHANCE } from "./constants";
+import { SCENES, RAIN_CHANCE, DAY_LENGTH, NIGHT_LENGTH } from "./constants";
 import { modFox, modScene } from "./ui";
 
 const gameState = {
   current: "INIT",
   clock: 1,
   wakeTime: -1,
+  sleepTime: -1,
   tick() {
     this.clock++;
 
     if (this.clock === this.wakeTime) {
       this.wake();
+    } else if (this.clock === this.sleepTime) {
+      this.sleep();
     }
 
     return this.clock;
@@ -26,6 +29,13 @@ const gameState = {
     modFox("idling");
     this.scene = Math.random() > RAIN_CHANCE ? 0 : 1;
     modScene(SCENES[this.scene]);
+    this.sleepTime = this.clock + DAY_LENGTH;
+  },
+  sleep() {
+    this.state = "SLEEP";
+    modFox("sleep");
+    modScene("night");
+    this.wakeTime = this.clock + NIGHT_LENGTH;
   },
   handleUserAction(icon) {
     // Can't do actions while in these states
