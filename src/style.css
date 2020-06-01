@@ -82,3 +82,22 @@ body {
   top: 300px;
   left: 160px;
 }
+
+/* modal */
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: blueviolet;
+  color: white;
+}
+
+.modal:empty {
+  display: none;
+}
+
+.modal-inner:empty {
+  display: none;
+}
