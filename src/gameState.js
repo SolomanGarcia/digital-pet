@@ -34,6 +34,28 @@ const gameState = {
       this.gameState();
       return;
     }
+
+    // Execute the currently selected action
+    switch (icon) {
+      case "weather":
+        this.changeWeather();
+        break;
+      case "poop":
+        this.cleanUpPoop();
+        break;
+      case "fish":
+        this.feed();
+        break;
+    }
+  },
+  changeWeather() {
+    console.log("changeWeather");
+  },
+  cleanUpPoop() {
+    console.log("cleanUpPoop");
+  },
+  feed() {
+    console.log("feed");
   },
 };
 
