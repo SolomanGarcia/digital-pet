@@ -7,7 +7,7 @@ import {
   getNextDieTime,
   getNextPoopTime,
 } from "./constants";
-import { modFox, modScene } from "./ui";
+import { modFox, modScene, togglePoopBag } from "./ui";
 
 const gameState = {
   current: "INIT",
@@ -130,7 +130,12 @@ const gameState = {
     this.determineFoxState();
   },
   cleanUpPoop() {
-    console.log("cleanUpPoop");
+    if (this.current === "POOPING") {
+      this.dieTime = -1;
+      togglePoopBag(true);
+      this.startCelebrating();
+      this.hungryTime = getNextHungerTime(this.clock);
+    }
   },
   feed() {
     // Can only feed when hungry
