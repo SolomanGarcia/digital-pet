@@ -67,6 +67,17 @@ const gameState = {
   die() {
     console.log("die");
   },
+  startCelebrating() {
+    this.current = "CELEBRATING";
+    modFox("celebrate");
+    this.timeToStartCelebrating = -1;
+    this.timeToEndCelebrating = this.clock + 2;
+  },
+  endCelebrating() {
+    this.current = "IDLING";
+    this.timeToEndCelebrating = -1;
+    this.determineFoxState();
+  },
   handleUserAction(icon) {
     // Can't do actions while in these states
     if (
