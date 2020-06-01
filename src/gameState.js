@@ -31,7 +31,7 @@ const gameState = {
     }
 
     if (this.current === "INIT" || this.current === "DEAD") {
-      this.gameState();
+      this.startGame();
       return;
     }
 
@@ -59,4 +59,5 @@ const gameState = {
   },
 };
 
+export const handleUserAction = gameState.handleUserAction.bind(gameState);
 export default gameState;
