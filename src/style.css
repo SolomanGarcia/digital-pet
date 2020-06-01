@@ -64,6 +64,10 @@ body {
   justify-content: space-between;
 }
 
+.btn {
+  outline: none;
+}
+
 .icons {
   position: absolute;
   top: 572px;

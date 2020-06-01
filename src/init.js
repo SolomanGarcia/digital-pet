@@ -1,6 +1,6 @@
 import gameState from "./gameState";
-import { TICK_RATE } from "./constants";
 import initButtons from "./buttons";
+import { TICK_RATE } from "./constants";
 
 async function init() {
   console.log("Starting game");
