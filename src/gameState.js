@@ -22,7 +22,18 @@ const gameState = {
     this.wakeTime = -1;
   },
   handleUserAction(icon) {
-    console.log(icon);
+    // Can't do actions while in these states
+    if (
+      ["SLEEP", "FEEDING", "CELEBRATING", "HATCHING"].includes(this.current)
+    ) {
+      // Do nothing
+      return;
+    }
+
+    if (this.current === "INIT" || this.current === "DEAD") {
+      this.gameState();
+      return;
+    }
   },
 };
 
