@@ -78,6 +78,15 @@ const gameState = {
     this.timeToEndCelebrating = -1;
     this.determineFoxState();
   },
+  determineFoxState() {
+    if (this.current === "IDLING") {
+      if (SCENES[this.scene] === "rain") {
+        modFox("rain");
+      } else {
+        modFox("idling");
+      }
+    }
+  },
   handleUserAction(icon) {
     // Can't do actions while in these states
     if (
