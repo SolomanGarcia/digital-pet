@@ -5,6 +5,7 @@ import {
   NIGHT_LENGTH,
   getNextHungerTime,
   getNextDieTime,
+  getNextPoopTime,
 } from "./constants";
 import { modFox, modScene } from "./ui";
 
@@ -15,6 +16,8 @@ const gameState = {
   sleepTime: -1,
   hungryTime: -1,
   dieTime: -1,
+  timeToStartCelebrating: -1,
+  timeToEndCelebrating: -1,
   tick() {
     this.clock++;
 
@@ -26,6 +29,10 @@ const gameState = {
       this.getHungry();
     } else if (this.clock === this.dieTime) {
       this.die();
+    } else if (this.clock === this.timeToStartCelebrating) {
+      this.startCelebrating();
+    } else if (this.clock === this.timeToEndCelebrating) {
+      this.endCelebrating();
     }
 
     return this.clock;
