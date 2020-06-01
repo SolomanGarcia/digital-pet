@@ -1,3 +1,5 @@
+import { SCENES, RAIN_CHANCE } from "./constants";
+
 const gameState = {
   current: "INIT",
   clock: 1,
