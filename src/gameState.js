@@ -61,6 +61,7 @@ const gameState = {
     this.state = "SLEEP";
     modFox("sleep");
     modScene("night");
+    this.clearTimes();
     this.wakeTime = this.clock + NIGHT_LENGTH;
   },
   clearTimes() {
