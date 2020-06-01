@@ -1,4 +1,5 @@
 import { SCENES, RAIN_CHANCE } from "./constants";
+import { modFox, modScene } from "./ui";
 
 const gameState = {
   current: "INIT",
@@ -14,14 +15,17 @@ const gameState = {
     return this.clock;
   },
   startGame() {
-    console.log("hatching");
     this.current = "HATCHING";
     this.wakeTime = this.clock + 3;
+    modFox("egg");
+    modScene("day");
   },
   wake() {
-    console.log("hatched");
     this.current = "IDLING";
     this.wakeTime = -1;
+    modFox("idling");
+    this.scene = Math.random() > RAIN_CHANCE ? 0 : 1;
+    modScene(SCENES[this.scene]);
   },
   handleUserAction(icon) {
     // Can't do actions while in these states
